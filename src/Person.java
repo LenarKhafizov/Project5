@@ -1,14 +1,23 @@
 public class Person {
     protected String name;
     protected String surname;
-    protected int bookAmount;
+    protected int ticketAmount;
 
-    public Person (String name, String surname, int bookAmount) {
+    public Person (String name, String surname, int ticketAmount) {
         this.name = name;
         this.surname = surname;
-        this.bookAmount = bookAmount;
+        this.ticketAmount = ticketAmount;
     }
-    public Person (String name) {
-        this(name, "",0);
+    public Person (String name, String surname) {
+        this(name, surname,1);
+    }
+    public boolean ticketUsed() {
+        ticketAmount--;
+        if (ticketAmount > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
