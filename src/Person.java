@@ -11,13 +11,10 @@ public class Person {
     public Person (String name, String surname) {
         this(name, surname,1);
     }
-    public boolean ticketUsed() {
+    public void ticketUsed() {
         ticketAmount--;
-        if (ticketAmount > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    }
+    public boolean hasTicket() {
+        return ticketAmount > 0;
     }
 }

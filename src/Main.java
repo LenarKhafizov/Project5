@@ -2,8 +2,8 @@ import java.util.*;
 
 public class Main {
 
-    public static ArrayList<Person> generateClients() {
-        ArrayList<Person> personList = new ArrayList<>();
+    public static List<Person> generateClients() {
+        List<Person> personList = new ArrayList<>();
         personList.add(new Person("Ленар", "Хафизов", 5));
         personList.add(new Person("Сергей", "Петров", 4));
         personList.add(new Person("Владимир", "Гуськов", 3));
@@ -13,22 +13,18 @@ public class Main {
     }
     public static void main(String[] args) {
         System.out.println("\t Вас приветствует симулятор атракциона!");
-        ArrayList<Person> clients = generateClients();
+        List<Person> clients = generateClients();
         Queue<Person> queue = new LinkedList<>();
-        queue.offer(clients.get(0));
-        queue.offer(clients.get(1));
-        queue.offer(clients.get(2));
-        queue.offer(clients.get(3));
-        queue.offer(clients.get(4));
-        while (true) {
+        for (Person person : clients) {
+            queue.offer(person);
+        }
+        do {
             Person client = queue.poll();
             System.out.println(client.name + " " + client.surname + " прокатился(-ась) на атракционе.");
-            if (client.ticketUsed()){
+            client.ticketUsed();
+            if (client.hasTicket()) {
                 queue.offer(client);
-           }
-           if (queue.size() == 0) {
-               break;
-           }
-        }
+            }
+        } while (queue.size() != 0);
     }
 }
